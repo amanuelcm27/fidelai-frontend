@@ -14,7 +14,7 @@ import {
 
 const pipelineSteps = [
   { icon: FileText, label: "Documents", color: "from-slate-500 to-slate-600" },
-  { icon: Bot, label: "AI Processing", color: "from-violet-500 to-purple-600" },
+  { icon: Bot, label: "AI Processing", color: "from-orange-500 to-red-600" },
   { icon: PenTool, label: "Annotators", color: "from-blue-500 to-cyan-500" },
   { icon: ShieldCheck, label: "Experts", color: "from-emerald-500 to-teal-500" },
   { icon: Database, label: "Dataset", color: "from-amber-500 to-orange-500" },
@@ -39,12 +39,12 @@ export function AIPipeline() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             AI Pipeline
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             End-to-End{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               Data Pipeline
             </span>
           </h2>
@@ -119,7 +119,7 @@ export function AIPipeline() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-            className="hidden lg:block absolute top-8 left-8 right-8 h-0.5 bg-gradient-to-r from-violet-500/20 via-blue-500/20 via-emerald-500/20 via-amber-500/20 to-pink-500/20 origin-left -z-10 blur-sm"
+            className="hidden lg:block absolute top-8 left-8 right-8 h-0.5 bg-gradient-to-r from-orange-500/20 via-blue-500/20 via-emerald-500/20 via-amber-500/20 to-pink-500/20 origin-left -z-10 blur-sm"
           />
         </div>
       </div>

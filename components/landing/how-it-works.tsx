@@ -10,8 +10,8 @@ const steps = [
     title: "Upload Data",
     description:
       "Contributors upload Amharic text documents, audio files, or images to the platform for processing.",
-    color: "from-violet-500 to-purple-600",
-    glow: "bg-violet-500/20",
+    color: "from-orange-500 to-red-600",
+    glow: "brand-glow",
   },
   {
     icon: Bot,
@@ -38,7 +38,7 @@ const steps = [
     description:
       "Validated, versioned datasets are published to the marketplace for researchers and companies to purchase.",
     color: "from-orange-500 to-amber-500",
-    glow: "bg-orange-500/20",
+    glow: "brand-glow",
   },
 ];
 
@@ -54,12 +54,12 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             How It Works
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             From Raw Data to{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               Production Datasets
             </span>
           </h2>
@@ -71,7 +71,7 @@ export function HowItWorks() {
         {/* Steps */}
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden lg:block absolute top-24 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-gradient-to-r from-violet-500/30 via-blue-500/30 via-emerald-500/30 to-orange-500/30" />
+          <div className="hidden lg:block absolute top-24 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-gradient-to-r from-orange-500/30 via-blue-500/30 via-emerald-500/30 to-orange-500/30" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (

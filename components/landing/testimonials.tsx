@@ -11,7 +11,7 @@ const testimonials = [
     quote:
       "FidelAI has transformed how we source Amharic training data. The quality scores and versioning make it easy to build reliable NLP models.",
     org: "University",
-    color: "bg-violet-500",
+    color: "brand-bg",
   },
   {
     name: "Sara Tekle",
@@ -38,7 +38,7 @@ const testimonials = [
     quote:
       "Purchasing validated Amharic datasets from the marketplace has accelerated our product development significantly.",
     org: "Enterprise",
-    color: "bg-orange-500",
+    color: "brand-bg",
   },
   {
     name: "Henok Getachew",
@@ -56,7 +56,7 @@ const testimonials = [
     quote:
       "The crowdsourcing model combined with AI pre-processing creates datasets of a quality we haven't seen before for Amharic.",
     org: "AI Company",
-    color: "bg-indigo-500",
+    color: "bg-amber-500",
   },
 ];
 
@@ -72,12 +72,12 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Trusted by{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               Researchers & Companies
             </span>
           </h2>
@@ -97,7 +97,7 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className="group relative p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-border hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
             >
-              <Quote className="w-8 h-8 text-violet-500/20 mb-4" />
+              <Quote className="w-8 h-8 brand-text-faint mb-4" />
 
               <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                 &ldquo;{t.quote}&rdquo;

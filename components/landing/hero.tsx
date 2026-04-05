@@ -22,11 +22,11 @@ function Particles({ count = 200 }) {
       pos[i * 3 + 1] = (Math.random() - 0.5) * 15;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 15;
 
-      // Purple/indigo palette
+      // Warm orange/amber palette
       const t = Math.random();
-      col[i * 3] = 0.4 + t * 0.3;     // R
-      col[i * 3 + 1] = 0.2 + t * 0.1; // G
-      col[i * 3 + 2] = 0.8 + t * 0.2; // B
+      col[i * 3] = 0.9 + t * 0.1;      // R
+      col[i * 3 + 1] = 0.45 + t * 0.25; // G
+      col[i * 3 + 2] = 0.05 + t * 0.08; // B
     }
     return [pos, col];
   }, [count]);
@@ -74,7 +74,7 @@ function FloatingRing() {
   return (
     <mesh ref={ref}>
       <torusGeometry args={[2.5, 0.02, 16, 100]} />
-      <meshBasicMaterial color="#7c3aed" transparent opacity={0.3} />
+      <meshBasicMaterial color="#f97316" transparent opacity={0.3} />
     </mesh>
   );
 }
@@ -91,7 +91,7 @@ function FloatingRing2() {
   return (
     <mesh ref={ref}>
       <torusGeometry args={[3.2, 0.015, 16, 100]} />
-      <meshBasicMaterial color="#6366f1" transparent opacity={0.2} />
+      <meshBasicMaterial color="#f59e0b" transparent opacity={0.2} />
     </mesh>
   );
 }
@@ -127,7 +127,7 @@ export function Hero() {
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-background/80 to-background" />
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.08),transparent_70%)]" />
+      <div className="absolute inset-0 z-[1] brand-radial-overlay" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
@@ -136,11 +136,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-medium mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full brand-chip-soft text-sm font-medium mb-8"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full brand-bg-soft opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 brand-bg" />
           </span>
           FidelAi - Next Gen Ai Data Hub
         </motion.div>
@@ -154,7 +154,7 @@ export function Hero() {
         >
           <span className="text-foreground">AI Data Marketplace</span>
           <br />
-          <span className="bg-gradient-to-r from-violet-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          <span className="brand-gradient-text-hero">
             for Amharic Language
           </span>
         </motion.h1>
@@ -179,7 +179,7 @@ export function Hero() {
         >
           <Link
             href="/register"
-            className="group relative px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl shadow-2xl shadow-violet-500/25 hover:shadow-violet-500/40 transition-all hover:-translate-y-0.5 flex items-center gap-2"
+            className="group relative px-8 py-4 text-base font-semibold text-white brand-gradient-btn rounded-2xl shadow-2xl brand-shadow brand-shadow-hover transition-all hover:-translate-y-0.5 flex items-center gap-2"
           >
             Get Started Free
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -188,7 +188,7 @@ export function Hero() {
             href="#marketplace"
             className="group px-8 py-4 text-base font-semibold text-foreground bg-foreground/5 hover:bg-foreground/10 border border-border/50 rounded-2xl transition-all hover:-translate-y-0.5 flex items-center gap-2"
           >
-            <Play className="w-4 h-4 text-violet-500" />
+            <Play className="w-4 h-4 brand-text" />
             Explore Marketplace
           </Link>
         </motion.div>
@@ -207,7 +207,7 @@ export function Hero() {
             { value: "1M+", label: "Annotations" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <div className="text-2xl sm:text-3xl font-bold brand-gradient-text-soft">
                 {stat.value}
               </div>
               <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
@@ -228,7 +228,7 @@ export function Hero() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-1.5"
         >
-          <div className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+          <div className="w-1.5 h-1.5 rounded-full brand-bg" />
         </motion.div>
       </motion.div>
     </section>

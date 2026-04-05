@@ -52,7 +52,7 @@ function FAQItem({
         onClick={onToggle}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
-        <span className="text-base font-medium group-hover:text-violet-500 transition-colors pr-4">
+        <span className="text-base font-medium group-hover-brand-text transition-colors pr-4">
           {faq.question}
         </span>
         <motion.div
@@ -96,12 +96,12 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             FAQ
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Frequently Asked{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               Questions
             </span>
           </h2>

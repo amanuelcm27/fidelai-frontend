@@ -16,7 +16,7 @@ export function CTA() {
           className="relative rounded-3xl overflow-hidden"
         >
           {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700" />
+          <div className="absolute inset-0 brand-gradient-surface" />
 
           {/* Decorative pattern */}
           <div className="absolute inset-0 opacity-10">
@@ -31,7 +31,7 @@ export function CTA() {
 
           {/* Glow effects */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 brand-bg-soft-faint rounded-full blur-3xl" />
 
           {/* Content */}
           <div className="relative px-8 py-20 sm:px-16 sm:py-24 text-center">
@@ -60,7 +60,7 @@ export function CTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/register"
-                className="group px-8 py-4 text-base font-semibold text-violet-700 bg-white rounded-2xl shadow-2xl shadow-black/20 hover:bg-white/95 transition-all hover:-translate-y-0.5 flex items-center gap-2"
+                className="group px-8 py-4 text-base font-semibold brand-text-strong bg-white rounded-2xl shadow-2xl shadow-black/20 hover:bg-white/95 transition-all hover:-translate-y-0.5 flex items-center gap-2"
               >
                 Create Free Account
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

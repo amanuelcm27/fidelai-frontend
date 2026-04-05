@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles , Database} from "lucide-react";
+import { Menu, X, Database, Sun, Moon, Monitor } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -13,6 +14,70 @@ const navLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Docs", href: "/documentation" },
 ];
+
+type ThemeOption = "light" | "dark" | "system";
+
+function ThemeSwitcher({ mobile = false }: { mobile?: boolean }) {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const current = (theme ?? "system") as ThemeOption;
+  const options: Array<{ value: ThemeOption; label: string; icon: React.ElementType }> = [
+    { value: "light", label: "Light", icon: Sun },
+    { value: "dark", label: "Dark", icon: Moon },
+    { value: "system", label: "System", icon: Monitor },
+  ];
+
+  if (!mounted) {
+    return (
+      <div
+        className={`rounded-xl border border-border/50 bg-background/80 ${
+          mobile ? "w-full h-10" : "h-9 w-[140px]"
+        }`}
+        aria-hidden
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`inline-flex items-center gap-1 rounded-xl border border-border/50 bg-background/80 p-1 ${
+        mobile ? "w-full" : ""
+      }`}
+      role="group"
+      aria-label="Theme switcher"
+    >
+      {options.map((option) => {
+        const active = current === option.value;
+        const Icon = option.icon;
+
+        return (
+          <button
+            key={option.value}
+            type="button"
+            onClick={() => setTheme(option.value)}
+            className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${
+              mobile ? "flex-1" : ""
+            } ${
+              active
+                ? "brand-chip"
+                : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+            }`}
+            aria-pressed={active}
+            aria-label={`Set ${option.label} theme`}
+          >
+            <Icon className="h-3.5 w-3.5" />
+            <span>{option.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,13 +106,13 @@ export function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/25 group-hover:shadow-violet-500/40 transition-shadow">
+                <div className="w-9 h-9 rounded-xl brand-gradient-logo flex items-center justify-center shadow-lg brand-shadow brand-shadow-hover transition-shadow">
                   <Database className="w-5 h-5 text-white" />
                 </div>
-                <div className="absolute -inset-1 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 opacity-0 group-hover:opacity-20 blur-lg transition-opacity" />
+                <div className="absolute -inset-1 rounded-xl brand-gradient-logo opacity-0 group-hover:opacity-20 blur-lg transition-opacity" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                <span className="text-violet-500">Fidel AI</span>
+                <span className="brand-text">Fidel AI</span>
               </span>
             </Link>
 
@@ -66,6 +131,7 @@ export function Navbar() {
 
             {/* Desktop Auth */}
             <div className="hidden lg:flex items-center gap-3">
+              <ThemeSwitcher />
               <Link
                 href="/login"
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -74,7 +140,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/register"
-                className="px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 transition-all hover:-translate-y-0.5"
+                className="px-5 py-2.5 text-sm font-medium text-white brand-gradient-btn rounded-xl shadow-lg brand-shadow brand-shadow-hover transition-all hover:-translate-y-0.5"
               >
                 Get Started
               </Link>
@@ -113,6 +179,7 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="mt-3 pt-3 border-t border-border/50 flex flex-col gap-2">
+                <ThemeSwitcher mobile />
                 <Link
                   href="/login"
                   onClick={() => setMobileOpen(false)}
@@ -123,7 +190,7 @@ export function Navbar() {
                 <Link
                   href="/register"
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm text-center font-medium text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl"
+                  className="px-4 py-3 text-sm text-center font-medium text-white brand-gradient-btn rounded-xl"
                 >
                   Get Started
                 </Link>

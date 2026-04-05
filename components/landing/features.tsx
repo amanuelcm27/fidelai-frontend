@@ -16,8 +16,8 @@ const features = [
     title: "AI Dataset Processing",
     description:
       "Automatic text extraction, chunking, quality scoring, and language detection powered by state-of-the-art AI models.",
-    gradient: "from-violet-500 to-purple-600",
-    shadow: "shadow-violet-500/20",
+    gradient: "from-orange-500 to-red-600",
+    shadow: "brand-shadow-soft",
   },
   {
     icon: Users,
@@ -41,7 +41,7 @@ const features = [
     description:
       "Browse, preview, and purchase versioned datasets with rich metadata, quality certificates, and instant downloads.",
     gradient: "from-orange-500 to-amber-500",
-    shadow: "shadow-orange-500/20",
+    shadow: "brand-shadow-soft",
   },
   {
     icon: CreditCard,
@@ -56,8 +56,8 @@ const features = [
     title: "Performance Analytics",
     description:
       "Real-time dashboards for contributors, annotators, and admins with engagement, quality, and revenue metrics.",
-    gradient: "from-indigo-500 to-violet-500",
-    shadow: "shadow-indigo-500/20",
+    gradient: "from-amber-500 to-orange-500",
+    shadow: "shadow-amber-500/20",
   },
 ];
 
@@ -77,7 +77,7 @@ export function Features() {
   return (
     <section id="features" className="relative py-28 overflow-hidden">
       {/* Background decor */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-violet-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] brand-bg-faint rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -88,12 +88,12 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             Features
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Everything You Need to Build{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               AI Datasets
             </span>
           </h2>
@@ -130,7 +130,7 @@ export function Features() {
               </p>
 
               {/* Hover gradient border effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500/0 via-violet-500/0 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/0 via-orange-500/0 to-amber-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
             </motion.div>
           ))}
         </motion.div>

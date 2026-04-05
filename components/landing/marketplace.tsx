@@ -75,12 +75,12 @@ export function Marketplace() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-500 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full brand-chip text-sm font-medium mb-4">
             Marketplace
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Browse{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="brand-gradient-text">
               Quality Datasets
             </span>
           </h2>
@@ -98,18 +98,18 @@ export function Marketplace() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden hover:border-violet-500/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/5 transition-all duration-300"
+              className="group relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden brand-hover-border hover:-translate-y-1 hover:shadow-xl brand-hover-shadow-subtle transition-all duration-300"
             >
               {/* Category tag */}
               <div className="p-6 pb-0">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-500">
+                  <span className="text-xs font-medium px-2.5 py-0.5 rounded-full brand-chip">
                     {dataset.category}
                   </span>
                   <QualityBadge score={dataset.quality} />
                 </div>
 
-                <h3 className="text-base font-semibold mb-1 group-hover:text-violet-500 transition-colors line-clamp-2">
+                <h3 className="text-base font-semibold mb-1 group-hover-brand-text transition-colors line-clamp-2">
                   {dataset.title}
                 </h3>
 
@@ -154,7 +154,7 @@ export function Marketplace() {
         >
           <Link
             href="/buyer"
-            className="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 transition-all hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white brand-gradient-btn rounded-2xl shadow-lg brand-shadow brand-shadow-hover transition-all hover:-translate-y-0.5"
           >
             Browse Full Marketplace
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

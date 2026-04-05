@@ -18,7 +18,7 @@
   --card-foreground: 222.2 84% 4.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-  --primary: 262.1 83.3% 57.8%;
+  --primary: 24 94% 53%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222.2 47.4% 11.2%;
@@ -30,7 +30,13 @@
   --destructive-foreground: 210 40% 98%;
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 262.1 83.3% 57.8%;
+  --ring: 24 94% 53%;
+  --brand: 24 94% 53%;
+  --brand-soft: 27 96% 61%;
+  --brand-strong: 20 91% 48%;
+  --brand-accent: 38 92% 50%;
+  --brand-accent-strong: 35 91% 45%;
+  --brand-hot: 12 85% 55%;
   --radius: 0.75rem;
 }
 
@@ -44,7 +50,7 @@
   --card-foreground: 210 40% 98%;
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;
-  --primary: 263.4 70% 50.4%;
+  --primary: 24 90% 58%;
   --primary-foreground: 210 40% 98%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
@@ -56,7 +62,13 @@
   --destructive-foreground: 210 40% 98%;
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --ring: 263.4 70% 50.4%;
+  --ring: 24 90% 58%;
+  --brand: 24 90% 58%;
+  --brand-soft: 27 90% 66%;
+  --brand-strong: 22 88% 54%;
+  --brand-accent: 38 85% 58%;
+  --brand-accent-strong: 35 84% 52%;
+  --brand-hot: 12 80% 62%;
 }
 
 /* ─────────────────────────────────────
@@ -71,6 +83,151 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/*
+ * Brand utilities.
+ * Keep public-page accent styling centralized here.
+ */
+.brand-text {
+  color: hsl(var(--brand));
+}
+
+.brand-text-soft {
+  color: hsl(var(--brand-soft));
+}
+
+.brand-text-strong {
+  color: hsl(var(--brand-strong));
+}
+
+.brand-text-faint {
+  color: hsl(var(--brand) / 0.2);
+}
+
+.group-hover-brand-text {
+  transition: color 0.2s ease;
+}
+
+.group:hover .group-hover-brand-text {
+  color: hsl(var(--brand));
+}
+
+.brand-bg {
+  background-color: hsl(var(--brand));
+}
+
+.brand-bg-soft {
+  background-color: hsl(var(--brand-soft));
+}
+
+.brand-bg-soft-faint {
+  background-color: hsl(var(--brand-soft) / 0.1);
+}
+
+.brand-bg-faint {
+  background-color: hsl(var(--brand) / 0.05);
+}
+
+.brand-glow {
+  background-color: hsl(var(--brand) / 0.2);
+}
+
+.brand-chip {
+  background-color: hsl(var(--brand) / 0.1);
+  border: 1px solid hsl(var(--brand) / 0.2);
+  color: hsl(var(--brand));
+}
+
+.brand-chip-soft {
+  background-color: hsl(var(--brand) / 0.1);
+  border: 1px solid hsl(var(--brand) / 0.2);
+  color: hsl(var(--brand-soft));
+}
+
+.brand-gradient-text {
+  background-image: linear-gradient(to right, hsl(var(--brand)), hsl(var(--brand-accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-text-hero {
+  background-image: linear-gradient(to right, hsl(var(--brand)), hsl(var(--brand-accent)), hsl(var(--brand-hot)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-text-soft {
+  background-image: linear-gradient(to right, hsl(var(--brand-soft)), hsl(var(--brand-accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-btn {
+  background-image: linear-gradient(to right, hsl(var(--brand-strong)), hsl(var(--brand-accent-strong)));
+}
+
+.brand-gradient-logo {
+  background-image: linear-gradient(to bottom right, hsl(var(--brand)), hsl(var(--brand-accent-strong)));
+}
+
+.brand-gradient-surface {
+  background-image: linear-gradient(to bottom right, hsl(var(--brand-strong)), hsl(var(--brand-accent-strong)), hsl(var(--brand-hot)));
+}
+
+.brand-shadow-soft {
+  box-shadow: 0 10px 24px hsl(var(--brand) / 0.2);
+}
+
+.brand-shadow {
+  box-shadow: 0 16px 36px hsl(var(--brand) / 0.25);
+}
+
+.brand-shadow-hover {
+  transition: box-shadow 0.25s ease;
+}
+
+.brand-shadow-hover:hover {
+  box-shadow: 0 20px 44px hsl(var(--brand) / 0.4);
+}
+
+.brand-hover-border {
+  transition: border-color 0.25s ease;
+}
+
+.brand-hover-border:hover {
+  border-color: hsl(var(--brand) / 0.2);
+}
+
+.brand-hover-shadow-subtle {
+  transition: box-shadow 0.25s ease;
+}
+
+.brand-hover-shadow-subtle:hover {
+  box-shadow: 0 10px 24px hsl(var(--brand) / 0.08);
+}
+
+.brand-hover-border-strong {
+  transition: border-color 0.25s ease;
+}
+
+.brand-hover-border-strong:hover {
+  border-color: hsl(var(--brand) / 0.3);
+}
+
+.brand-hover-shadow-role {
+  transition: box-shadow 0.25s ease;
+}
+
+.brand-hover-shadow-role:hover {
+  box-shadow: 0 14px 32px hsl(var(--brand) / 0.1);
+}
+
+.brand-radial-overlay {
+  background: radial-gradient(ellipse at center, hsl(var(--brand) / 0.1), transparent 70%);
 }
 
 /* ─────────────────────────────────────
