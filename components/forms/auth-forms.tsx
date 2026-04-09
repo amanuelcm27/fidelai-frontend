@@ -55,8 +55,10 @@ export function LoginForm() {
   const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
     setTimeout(() => {
+      // Set mock cookie for middleware
+      document.cookie = "token=mock-token; path=/; max-age=3600";
       setIsLoading(false);
-      router.push("/dashboard/contributor"); 
+      router.push("/dashboard/profile"); 
     }, 1500);
   };
 
@@ -182,8 +184,10 @@ export function RegisterForm() {
   const onSubmit = async (data: RegisterFormValues) => {
     setIsLoading(true);
     setTimeout(() => {
+      // Set mock cookie for middleware
+      document.cookie = "token=mock-token; path=/; max-age=3600";
       setIsLoading(false);
-      router.push("/verify-email");
+      router.push("/dashboard/profile"); 
     }, 1500);
   };
 

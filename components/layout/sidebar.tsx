@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/context/auth-context';
 import {
   LayoutDashboard,
   Upload,
@@ -14,8 +15,15 @@ import {
   Settings,
   BarChart3,
   Users,
+  User,
+  Bell,
+  HelpCircle,
+  LogOut,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
-
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 interface SidebarItem {
   label: string;
   href: string;
@@ -46,7 +54,7 @@ const buyerLinks: SidebarItem[] = [
 const adminLinks: SidebarItem[] = [
   { label: 'Console', href: '/admin', icon: <BarChart3 className="h-4 w-4" /> },
   { label: 'Users', href: '/admin/users', icon: <Users className="h-4 w-4" /> },
-  { label: 'Settings', href: '/admin/settings', icon: <Settings className="h-4 w-4" /> },
+  { label: 'System', href: '/admin/settings', icon: <Settings className="h-4 w-4" /> },
 ];
 
 const allRoleLinks: Record<string, SidebarItem[]> = {
@@ -57,38 +65,105 @@ const allRoleLinks: Record<string, SidebarItem[]> = {
   admin: adminLinks,
 };
 
+const sharedLinks: SidebarItem[] = [
+  { label: 'Profile', href: '/dashboard/profile', icon: <User className="h-4 w-4" /> },
+  { label: 'Notifications', href: '/dashboard/notifications', icon: <Bell className="h-4 w-4" /> },
+  { label: 'Settings', href: '/dashboard/settings', icon: <Settings className="h-4 w-4" /> },
+  { label: 'Support', href: '/dashboard/support', icon: <HelpCircle className="h-4 w-4" /> },
+];
+
 interface SidebarProps {
   role?: string;
 }
 
 export function Sidebar({ role = 'contributor' }: SidebarProps) {
   const pathname = usePathname();
-  const links = allRoleLinks[role] || contributorLinks;
+  const { logout, user } = useAuth();
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  
+  const roleLinks = allRoleLinks[role] || contributorLinks;
 
   return (
-    <aside className="flex h-full w-64 flex-col border-r bg-background p-4">
-      <div className="mb-8">
-        <h2 className="text-lg font-bold">FidelAI</h2>
-        <p className="text-xs text-muted-foreground capitalize">{role} Panel</p>
+    <aside className={cn(
+      "flex h-full flex-col border-r bg-card transition-all duration-300",
+      isCollapsed ? "w-20" : "w-64"
+    )}>
+      <div className="flex items-center justify-between p-6">
+        {!isCollapsed && (
+          <div>
+            <h2 className="text-xl font-black brand-gradient-text">FidelAI</h2>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">{role} Panel</p>
+          </div>
+        )}
+        <button 
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="p-1.5 rounded-lg border bg-background hover:bg-muted transition-colors ml-auto"
+        >
+          {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+        </button>
       </div>
 
-      <nav className="flex flex-col gap-1">
-        {links.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              'flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors',
-              pathname === item.href
-                ? 'bg-primary/10 text-primary font-medium'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-            )}
-          >
-            {item.icon}
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <div className="flex-1 overflow-y-auto px-4 space-y-8 no-scrollbar">
+        {/* Role Specific Group */}
+        <section>
+          {!isCollapsed && <p className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase opacity-50">Main Menu</p>}
+          <nav className="flex flex-col gap-1">
+            {roleLinks.map((item) => (
+              <SidebarNavLink key={item.href} item={item} active={pathname === item.href} isCollapsed={isCollapsed} />
+            ))}
+          </nav>
+        </section>
+
+        {/* Shared Group */}
+        <section>
+          {!isCollapsed && <p className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase opacity-50">Account Management</p>}
+          <nav className="flex flex-col gap-1">
+            {sharedLinks.map((item) => (
+              <SidebarNavLink key={item.href} item={item} active={pathname === item.href} isCollapsed={isCollapsed} />
+            ))}
+          </nav>
+        </section>
+      </div>
+
+      {/* Logout / User Info */}
+      <div className="p-4 border-t border-border/50">
+        <button
+          onClick={() => logout()}
+          className={cn(
+            "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-destructive transition-all hover:bg-destructive/10",
+            isCollapsed && "justify-center"
+          )}
+        >
+          <LogOut className="h-4 w-4" />
+          {!isCollapsed && <span>Logout</span>}
+        </button>
+      </div>
     </aside>
+  );
+}
+
+function SidebarNavLink({ item, active, isCollapsed }: { item: SidebarItem; active: boolean; isCollapsed: boolean }) {
+  return (
+    <Link
+      href={item.href}
+      className={cn(
+        'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all duration-200',
+        active
+          ? 'bg-primary text-white shadow-lg shadow-primary/20'
+          : 'text-muted-foreground hover:text-foreground hover:bg-muted',
+        isCollapsed && "justify-center px-0"
+      )}
+    >
+      <div className={cn("transition-transform duration-200 group-hover:scale-110", active && "scale-110")}>
+        {item.icon}
+      </div>
+      {!isCollapsed && <span className="font-semibold">{item.label}</span>}
+      {active && !isCollapsed && (
+        <motion.div 
+          layoutId="sidebar-active"
+          className="ml-auto w-1.5 h-1.5 rounded-full bg-white"
+        />
+      )}
+    </Link>
   );
 }
