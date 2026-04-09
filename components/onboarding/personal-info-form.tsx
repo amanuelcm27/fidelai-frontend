@@ -6,16 +6,27 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const roles: { id: OnboardingRole; title: string; desc: string; icon: any; color: string; border: string; bg: string; activeBg: string }[] = [
+const roles: { 
+  id: OnboardingRole; 
+  title: string; 
+  desc: string; 
+  icon: any; 
+  color: string; 
+  dotColor: string;
+  border: string; 
+  bg: string; 
+  activeBg: string 
+}[] = [
   { 
     id: "contributor", 
     title: "Contributor", 
     desc: "Upload Amharic data & earn", 
     icon: Upload,
-    color: "text-primary",
-    border: "border-primary",
-    bg: "bg-primary/5",
-    activeBg: "bg-primary/20"
+    color: "text-slate-600 dark:text-slate-400",
+    dotColor: "bg-slate-600 dark:bg-slate-400",
+    border: "border-slate-300 dark:border-slate-700",
+    bg: "bg-slate-500/5",
+    activeBg: "bg-slate-500/20"
   },
   { 
     id: "annotator", 
@@ -23,6 +34,7 @@ const roles: { id: OnboardingRole; title: string; desc: string; icon: any; color
     desc: "Label data & get paid", 
     icon: PenTool,
     color: "text-blue-500",
+    dotColor: "bg-blue-500",
     border: "border-blue-500",
     bg: "bg-blue-500/5",
     activeBg: "bg-blue-500/20"
@@ -33,6 +45,7 @@ const roles: { id: OnboardingRole; title: string; desc: string; icon: any; color
     desc: "Review & ensure quality", 
     icon: ShieldCheck,
     color: "text-emerald-500",
+    dotColor: "bg-emerald-500",
     border: "border-emerald-500",
     bg: "bg-emerald-500/5",
     activeBg: "bg-emerald-500/20"
@@ -43,6 +56,7 @@ const roles: { id: OnboardingRole; title: string; desc: string; icon: any; color
     desc: "Purchase top-tier datasets", 
     icon: ShoppingBag,
     color: "text-amber-600",
+    dotColor: "bg-amber-600",
     border: "border-amber-600",
     bg: "bg-amber-600/5",
     activeBg: "bg-amber-600/20"
@@ -163,15 +177,15 @@ export function PersonalInfoForm() {
                 setRole(r.id);
                 setErrors({ ...errors, role: "" });
               }}
-              className={`flex items-start gap-4 p-5 rounded-2xl border-2 transition-all relative overflow-hidden ${
+              className={`flex items-start gap-4 p-5 rounded-2xl transition-all relative overflow-hidden ${
                 role === r.id 
-                  ? `${r.border} ${r.activeBg} shadow-lg ring-4 ring-primary/10 scale-[1.02]` 
-                  : "border-border/50 bg-background hover:border-border hover:bg-muted/30"
+                  ? `${r.activeBg} shadow-lg scale-[1.02]` 
+                  : "bg-background hover:bg-muted/30"
               }`}
             >
               {role === r.id && (
-                <div className={`absolute top-0 right-0 w-8 h-8 ${r.border} border-b border-l rounded-bl-xl flex items-center justify-center opacity-20`}>
-                   <div className={`w-2 h-2 rounded-full ${r.color.replace('text-', 'bg-')}`} />
+                <div className={`absolute top-0 right-0 w-8 h-8 ${r.activeBg} rounded-bl-xl flex items-center justify-center opacity-40`}>
+                   <div className={`w-2 h-2 rounded-full ${r.dotColor}`} />
                 </div>
               )}
               <div className={`p-3 rounded-xl ${role === r.id ? "bg-background shadow-sm" : r.bg} shrink-0 transition-all`}>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sparkles, Globe, MessageCircle, ExternalLink } from "lucide-react";
+import { Database, Globe, MessageCircle, ExternalLink } from "lucide-react";
 
 const footerLinks = {
   Platform: [
@@ -45,8 +45,8 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg brand-gradient-logo flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg brand-gradient-logo flex items-center justify-center shadow-md">
+                <Database className="w-4 h-4 text-white" />
               </div>
               <span className="text-lg font-bold">
                 Fidel<span className="brand-text">AI</span>
@@ -93,11 +93,8 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-border/50 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground text-center sm:text-left">
             &copy; {new Date().getFullYear()} FidelAI. All rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Built with ❤️ for the Amharic AI community
           </p>
         </div>
       </div>

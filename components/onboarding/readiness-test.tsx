@@ -90,7 +90,7 @@ export function ReadinessTest() {
             <div className="grid grid-cols-3 gap-3">
               {[
                 { label: 'Negative', color: 'bg-destructive/10 border-destructive text-destructive', active: 'bg-destructive text-white border-destructive' },
-                { label: 'Neutral', color: 'bg-muted border-border text-muted-foreground', active: 'bg-primary text-white border-primary' },
+                { label: 'Neutral', color: 'bg-muted border-border text-muted-foreground', active: 'bg-zinc-600 text-white border-zinc-600' },
                 { label: 'Positive', color: 'bg-emerald-500/10 border-emerald-500 text-emerald-600 dark:text-emerald-400', active: 'bg-emerald-500 text-white border-emerald-500' }
               ].map((opt) => (
                 <button
