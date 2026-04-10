@@ -51,7 +51,8 @@ const expertLinks: SidebarItem[] = [
 ];
 
 const buyerLinks: SidebarItem[] = [
-  { label: 'Marketplace', href: '/buyer', icon: <ShoppingCart className="h-4 w-4" /> },
+  { label: 'Dashboard', href: '/buyer', icon: <LayoutDashboard className="h-4 w-4" /> },
+  { label: 'Marketplace', href: '/buyer/marketplace', icon: <ShoppingCart className="h-4 w-4" /> },
   { label: 'Library', href: '/buyer/library', icon: <Library className="h-4 w-4" /> },
 ];
 
