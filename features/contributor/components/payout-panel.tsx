@@ -1,0 +1,107 @@
+"use client";
+
+import { useState } from "react";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle, 
+  Button, 
+  Badge 
+} from "@/components/ui";
+import { 
+  Wallet, 
+  ArrowUpRight, 
+  History, 
+  ExternalLink,
+  DollarSign
+} from "lucide-react";
+import { WithdrawModal } from "./withdraw-modal";
+
+export function PayoutPanel() {
+  const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
+
+  const transactions = [
+    { id: "TX123", amount: 450.00, date: "2024-03-15", status: "Completed", type: "Withdrawal" },
+    { id: "TX124", amount: 120.50, date: "2024-03-10", status: "Completed", type: "Earnings" },
+    { id: "TX125", amount: 800.00, date: "2024-03-01", status: "Processing", type: "Withdrawal" },
+  ];
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between pb-2">
+        <CardTitle className="text-lg font-bold">Earnings & Payouts</CardTitle>
+        <Wallet className="w-5 h-5 text-primary" />
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl border bg-muted/20 space-y-1">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Available</p>
+            <p className="text-2xl font-black text-emerald-600">ETB 4,250.00</p>
+          </div>
+          <div className="p-4 rounded-xl border bg-muted/20 space-y-1">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Pending</p>
+            <p className="text-2xl font-black text-amber-600">ETB 1,120.00</p>
+          </div>
+        </div>
+
+        <Button 
+          className="w-full flex items-center justify-center gap-2 h-11"
+          onClick={() => setIsWithdrawModalOpen(true)}
+        >
+          <DollarSign className="w-4 h-4" />
+          Withdraw Earnings
+        </Button>
+
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+              <History className="w-3 h-3" />
+              Recent Transactions
+            </h4>
+            <button className="text-[10px] font-bold text-primary hover:underline">View All</button>
+          </div>
+
+          <div className="space-y-2">
+            {transactions.map(tx => (
+              <div key={tx.id} className="flex items-center justify-between p-2.5 rounded-lg border bg-card hover:bg-muted/30 transition-colors group">
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                    tx.type === 'Withdrawal' ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700'
+                  }`}>
+                    {tx.type === 'Withdrawal' ? <ArrowUpRight className="w-4 h-4" /> : <DollarSign className="w-4 h-4" />}
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold">{tx.type} — {tx.id}</p>
+                    <p className="text-[10px] text-muted-foreground">{tx.date}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-black">{tx.type === 'Withdrawal' ? '-' : '+'} ETB {tx.amount.toFixed(2)}</p>
+                  <p className={`text-[10px] font-medium ${
+                    tx.status === 'Completed' ? 'text-emerald-600' : 'text-amber-600'
+                  }`}>{tx.status}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
+          <p className="text-xs font-medium text-blue-800 flex items-center gap-2">
+            <ExternalLink className="w-3 h-3" />
+            Revenue Share Notice
+          </p>
+          <p className="text-[10px] text-blue-700/80 mt-1">
+            Current rate: 35% of marketplace sales. Reach Gold Level to unlock 45%.
+          </p>
+        </div>
+      </CardContent>
+
+      <WithdrawModal 
+        isOpen={isWithdrawModalOpen} 
+        onClose={() => setIsWithdrawModalOpen(false)} 
+      />
+    </Card>
+  );
+}

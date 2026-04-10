@@ -26,7 +26,7 @@ export function AIPipeline() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-28 bg-muted/30 overflow-hidden">
+    <section className="relative py-28 overflow-hidden">
       {/* Background decor */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(124,58,237,0.04),transparent_70%)] pointer-events-none" />
 

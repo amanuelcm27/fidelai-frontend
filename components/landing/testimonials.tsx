@@ -62,7 +62,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-28 bg-muted/30 overflow-hidden">
+    <section className="relative py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

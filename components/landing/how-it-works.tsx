@@ -44,7 +44,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-28 bg-muted/30">
+    <section id="how-it-works" className="relative py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

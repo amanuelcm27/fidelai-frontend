@@ -5,13 +5,14 @@ import { useRole } from "@/context/role-context";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { RoleToggle } from "@/components/dashboard/role-toggle";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { role } = useRole();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex h-screen overflow-hidden bg-background">
       {/* Desktop Sidebar */}
       <aside className="w-64 border-r hidden md:block">
         <Sidebar role={role || 'contributor'} />
@@ -51,16 +52,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         )}
       </AnimatePresence>
 
-      <main className="flex-1 flex flex-col min-h-screen overflow-hidden">
+      <main className="flex-1 flex flex-col h-full overflow-hidden">
         {/* Topbar Placeholder / Header */}
         <header className="h-16 border-b flex items-center justify-between px-8 bg-card/50 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-4">
              <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider md:hidden">FidelAI</h2>
           </div>
-          <div className="flex items-center gap-4">
-            {/* Notifications / User Avatar could go here */}
-            <div className="h-8 w-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <span className="text-xs font-bold text-primary">AS</span>
+          <div className="flex items-center gap-6">
+            <RoleToggle />
+            <div className="h-9 w-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors">
+              <span className="text-xs font-bold text-primary">AM</span>
             </div>
           </div>
         </header>

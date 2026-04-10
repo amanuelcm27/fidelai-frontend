@@ -20,7 +20,9 @@ import {
   HelpCircle,
   LogOut,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  FileText,
+  Wallet
 } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -31,8 +33,10 @@ interface SidebarItem {
 }
 
 const contributorLinks: SidebarItem[] = [
-  { label: 'Dashboard', href: '/contributor', icon: <LayoutDashboard className="h-4 w-4" /> },
-  { label: 'Upload', href: '/contributor/upload', icon: <Upload className="h-4 w-4" /> },
+  { label: 'Overview', href: '/contributor', icon: <LayoutDashboard className="h-4 w-4" /> },
+  { label: 'Upload Dataset', href: '/contributor/upload', icon: <Upload className="h-4 w-4" /> },
+  { label: 'My Submissions', href: '/contributor/submissions', icon: <FileText className="h-4 w-4" /> },
+  { label: 'Wallet & Earnings', href: '/contributor/wallet', icon: <Wallet className="h-4 w-4" /> },
 ];
 
 const annotatorLinks: SidebarItem[] = [

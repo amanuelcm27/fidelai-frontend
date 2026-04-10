@@ -22,11 +22,11 @@ function Particles({ count = 200 }) {
       pos[i * 3 + 1] = (Math.random() - 0.5) * 15;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 15;
 
-      // Warm orange/amber palette
+      // Warm orange/amber palette - boosted for vibrancy
       const t = Math.random();
-      col[i * 3] = 0.9 + t * 0.1;      // R
-      col[i * 3 + 1] = 0.45 + t * 0.25; // G
-      col[i * 3 + 2] = 0.05 + t * 0.08; // B
+      col[i * 3] = 1.0;                // R (Full brightness)
+      col[i * 3 + 1] = 0.5 + t * 0.3; // G (Brighter golden)
+      col[i * 3 + 2] = 0.1 + t * 0.1; // B
     }
     return [pos, col];
   }, [count]);
@@ -74,7 +74,7 @@ function FloatingRing() {
   return (
     <mesh ref={ref}>
       <torusGeometry args={[2.5, 0.02, 16, 100]} />
-      <meshBasicMaterial color="#f97316" transparent opacity={0.3} />
+      <meshBasicMaterial color="#f97316" transparent opacity={0.7} />
     </mesh>
   );
 }
@@ -91,7 +91,7 @@ function FloatingRing2() {
   return (
     <mesh ref={ref}>
       <torusGeometry args={[3.2, 0.015, 16, 100]} />
-      <meshBasicMaterial color="#f59e0b" transparent opacity={0.2} />
+      <meshBasicMaterial color="#f59e0b" transparent opacity={0.6} />
     </mesh>
   );
 }
@@ -99,7 +99,7 @@ function FloatingRing2() {
 function Scene() {
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1.0} />
       <Particles count={300} />
       <FloatingRing />
       <FloatingRing2 />
@@ -126,7 +126,7 @@ export function Hero() {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-background/80 to-background" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background via-background/40 to-background" />
       <div className="absolute inset-0 z-[1] brand-radial-overlay" />
 
       {/* Content */}
