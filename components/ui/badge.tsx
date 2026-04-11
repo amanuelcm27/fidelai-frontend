@@ -9,7 +9,7 @@ export function Badge({ className, variant = 'default', ...props }: BadgeProps) 
   const variants = {
     default: 'bg-primary text-primary-foreground hover:bg-primary/80',
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-    outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+    outline: 'border border-input bg-background text-foreground',
     destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/80',
     success: 'bg-emerald-500/15 text-emerald-600 border border-emerald-500/20',
     warning: 'bg-amber-500/15 text-amber-600 border border-amber-500/20',

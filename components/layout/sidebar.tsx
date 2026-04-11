@@ -59,7 +59,7 @@ const buyerLinks: SidebarItem[] = [
 const adminLinks: SidebarItem[] = [
   { label: 'Console', href: '/admin', icon: <BarChart3 className="h-4 w-4" /> },
   { label: 'Users', href: '/admin/users', icon: <Users className="h-4 w-4" /> },
-  { label: 'System', href: '/admin/settings', icon: <Settings className="h-4 w-4" /> },
+  { label: 'System', href: '/admin/system', icon: <Settings className="h-4 w-4" /> },
 ];
 
 const allRoleLinks: Record<string, SidebarItem[]> = {
