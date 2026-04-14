@@ -11,7 +11,7 @@ export default function AdminDashboard() {
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-[0.2em] mb-2">
             <LayoutDashboard className="w-3.5 h-3.5" />
-            Admin Mission Control
+            Admin Control
           </div>
           <h1 className="text-4xl font-black tracking-tighter">Welcome back, Admin</h1>
           <p className="text-muted-foreground text-lg leading-relaxed">

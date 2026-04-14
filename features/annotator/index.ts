@@ -1,11 +1,10 @@
 /**
  * Annotator Feature Module
  *
- * Contains task queue, annotation workspace, and submission logic.
+ * Contains task queue, annotation workspace, and performance tracking.
  */
 
-// Future exports:
-// export { TaskQueue } from './components/task-queue';
-// export { AnnotationWorkspace } from './components/annotation-workspace';
-// export { useTaskQueue } from './hooks/use-task-queue';
-// export { useAnnotation } from './hooks/use-annotation';
+export { AnnotatorDashboardContent } from "./components/dashboard-content";
+export { TaskQueueList } from "./components/task-queue";
+export { PerformanceAnalytics } from "./components/performance";
+export { AnnotatorWorkspace } from "./components/workspace";
