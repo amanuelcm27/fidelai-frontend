@@ -48,7 +48,9 @@ const annotatorLinks: SidebarItem[] = [
 
 const expertLinks: SidebarItem[] = [
   { label: 'Dashboard', href: '/expert', icon: <ShieldCheck className="h-4 w-4" /> },
-  { label: 'Workspace', href: '/expert/workspace', icon: <PenTool className="h-4 w-4" /> },
+  { label: 'Review Queue', href: '/expert/queue', icon: <ListTodo className="h-4 w-4" /> },
+  { label: 'Performance', href: '/expert/performance', icon: <FileText className="h-4 w-4" /> },
+  { label: 'Analytics', href: '/expert/analytics', icon: <BarChart3 className="h-4 w-4" /> },
 ];
 
 const buyerLinks: SidebarItem[] = [

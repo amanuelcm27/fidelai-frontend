@@ -1,10 +1,11 @@
 /**
  * Expert Feature Module
  *
- * Contains adjudication queue, expert workspace, and conflict resolution.
+ * Contains resolution queue, expert workspace, and conflict resolution.
  */
 
-// Future exports:
-// export { AdjudicationQueue } from './components/adjudication-queue';
-// export { ExpertWorkspace } from './components/expert-workspace';
-// export { useAdjudication } from './hooks/use-adjudication';
+export { ExpertDashboardContent } from './components/dashboard-content';
+export { ExpertQueueList } from './components/queue';
+export { ExpertWorkspace } from './components/workspace';
+export { ExpertPerformanceRecords } from './components/performance';
+export { ExpertAnalyticsDashboard } from './components/analytics';
