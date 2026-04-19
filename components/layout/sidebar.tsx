@@ -98,10 +98,10 @@ export function Sidebar({ role = 'contributor' }: SidebarProps) {
     )}>
       <div className="flex items-center justify-between p-6">
         {!isCollapsed && (
-          <div>
+          <Link href="/" className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
             <h2 className="text-xl font-black brand-gradient-text">FidelAI</h2>
             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">{role} Panel</p>
-          </div>
+          </Link>
         )}
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
