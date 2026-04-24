@@ -6,12 +6,24 @@ import { ProfileInfoForm } from "@/features/profile/components/profile-info-form
 import { RoleInfoSection } from "@/features/profile/components/role-info-section";
 import { ActivitySummary } from "@/features/profile/components/activity-summary";
 import { DocumentCard } from "@/components/dashboard/document-card";
-import { mockUser, mockDocuments } from "@/lib/mocks/dashboard";
+import { mockUser, mockDocuments, type DashboardUser } from "@/lib/mocks/dashboard";
 import { motion } from "framer-motion";
 
 export default function ProfilePage() {
   const { user } = useAuth();
-  const displayUser = user || mockUser; // Use actual user or fallback to mock
+  const displayUser: DashboardUser = user
+    ? {
+        id: user.id,
+        fullName: user.name?.trim() || user.email.split("@")[0] || "User",
+        email: user.email,
+        phone: mockUser.phone,
+        country: mockUser.country,
+        language: mockUser.language,
+        role: user.role,
+        status: "active",
+        joinedDate: mockUser.joinedDate,
+      }
+    : mockUser;
 
   return (
     <motion.div

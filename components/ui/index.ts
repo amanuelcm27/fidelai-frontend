@@ -6,5 +6,5 @@ export { Badge } from './badge';
 export { Progress } from './progress';
 export { Select } from './select';
 export { Checkbox } from './checkbox';
-export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
+export { Tabs } from './tabs';
 export { Switch } from './switch';

@@ -136,7 +136,7 @@ export const completedTasks: CompletedTask[] = [
     chunksCompleted: 8,
     accuracy: 78.5,
     date: "2026-04-14",
-    consensusStatus: "Escalated to Expert",
+    consensusStatus: "Disputed (Escalated)",
   },
   {
     id: "TASK-1071",
@@ -176,7 +176,7 @@ export const completedTasks: CompletedTask[] = [
     chunksCompleted: 6,
     accuracy: 72.0,
     date: "2026-04-10",
-    consensusStatus: "Escalated to Expert",
+    consensusStatus: "Disputed (Escalated)",
   },
 ];
 

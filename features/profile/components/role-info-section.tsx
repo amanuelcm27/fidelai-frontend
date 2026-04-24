@@ -1,6 +1,6 @@
 "use client";
 
-import { UserRole } from "@/lib/mocks/dashboard.ts";
+import { UserRole } from "@/lib/mocks/dashboard";
 import { Briefcase, BookOpen, Microscope, Zap, Shield } from "lucide-react";
 
 interface RoleInfoSectionProps {

@@ -1,20 +1,28 @@
 "use client";
 
 import { StatsCard } from "@/components/dashboard/stats-card";
-import { UserRole } from "@/lib/mocks/dashboard.ts";
+import { UserRole } from "@/lib/mocks/dashboard";
 import { CheckCircle2, UploadCloud, ShoppingCart, Activity } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface ActivitySummaryProps {
   role: UserRole;
 }
 
+interface SummaryStat {
+  title: string;
+  value: string;
+  icon: LucideIcon;
+  trend?: { value: number; isPositive: boolean };
+}
+
 export function ActivitySummary({ role }: ActivitySummaryProps) {
-  const commonStats = [
+  const commonStats: SummaryStat[] = [
     { title: "Last Login", value: "Today, 10:24 AM", icon: Activity },
     { title: "Account Status", value: "Verified", icon: CheckCircle2 },
   ];
 
-  const roleStats = {
+  const roleStats: Record<UserRole, SummaryStat[]> = {
     contributor: [
       { title: "Uploaded Datasets", value: "14", trend: { value: 12, isPositive: true }, icon: UploadCloud },
       { title: "Pending Review", value: "3", icon: Activity },
